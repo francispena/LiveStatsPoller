@@ -73,7 +73,7 @@ namespace LiveStatsPoller
             Console.CursorTop = 1;
             Console.Write($"{utcTimeNow}");
 
-            if (utcTimeNow.Second == 0 && utcTimeNow.Minute % 5 == 0)
+            if (utcTimeNow.Second == 0 && (utcTimeNow.Minute % 1 == 0 || utcTimeNow.Minute % 6 == 0))
             {
                 
                 Task.Run(async () =>
