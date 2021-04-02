@@ -73,9 +73,8 @@ namespace LiveStatsPoller
             Console.CursorTop = 1;
             Console.Write($"{utcTimeNow}");
 
-            if (utcTimeNow.Second == 0 && (utcTimeNow.Minute % 1 == 0 || utcTimeNow.Minute % 6 == 0))
+            if (utcTimeNow.Second == 0 && utcTimeNow.Minute % 5 == 0 )
             {
-                
                 Task.Run(async () =>
                 {
                     var pollResult = await Fetch();
@@ -106,7 +105,7 @@ namespace LiveStatsPoller
 
             var result = await httpService.GetAsync<string>("https://api.timkoto.com/dev/api/utility/v1/GetLiveStats", new Dictionary<string, string>
             {
-                {"x-api-key", "052d7c2822msh1effd682c0dbce0p113fabjsn219fbe03967c"}
+                {"x-api-key", "jVq8KNLxQ52I7cWrmnDDT5bCTx3BDmza1l3MeTFJ"}
             });
 
             return result;
@@ -118,7 +117,7 @@ namespace LiveStatsPoller
 
             var result = await httpService.GetAsync<string>("https://api.timkoto.com/dev/api/utility/v1/RankTeams", new Dictionary<string, string>
             {
-                {"x-api-key", "052d7c2822msh1effd682c0dbce0p113fabjsn219fbe03967c"}
+                {"x-api-key", "jVq8KNLxQ52I7cWrmnDDT5bCTx3BDmza1l3MeTFJ"}
             });
 
             return result;
