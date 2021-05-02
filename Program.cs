@@ -73,7 +73,7 @@ namespace LiveStatsPoller
             Console.CursorTop = 1;
             Console.Write($"{utcTimeNow}");
 
-            if (utcTimeNow.Second == 0 && utcTimeNow.Minute % 5 == 0 )
+            if (utcTimeNow.Second == 0 && utcTimeNow.Minute % 3 == 0 )
             {
                 Task.Run(async () =>
                 {
@@ -101,28 +101,45 @@ namespace LiveStatsPoller
 
         private static async Task<string> Fetch()
         {
-            var httpService = new HttpService();
-
-            var result = await httpService.GetAsync<string>("https://api.timkoto.com/dev/api/utility/v1/GetLiveStats", new Dictionary<string, string>
+            try
             {
-                {"x-api-key", "jVq8KNLxQ52I7cWrmnDDT5bCTx3BDmza1l3MeTFJ"}
+                var httpService = new HttpService();
+
+                var result = await httpService.GetAsync<string>("https://api.timkoto.com/util/api/utility/v1/GetOfficialNbaStats", new Dictionary<string, string>
+            {
+                {"x-api-key", "zuMylMBN8s4hePFTcgmGrvAeXoOLkPP2nxHp7er2"}
             });
 
-            return result;
+                return result;
+            }
+            catch (Exception)
+            {
+                //throw;
+            }
+
+            return "Failed";
         }
 
         private static async Task<string> RankTeams()
         {
-            var httpService = new HttpService();
-
-            var result = await httpService.GetAsync<string>("https://api.timkoto.com/dev/api/utility/v1/RankTeams", new Dictionary<string, string>
+            try
             {
-                {"x-api-key", "jVq8KNLxQ52I7cWrmnDDT5bCTx3BDmza1l3MeTFJ"}
+                var httpService = new HttpService();
+
+                var result = await httpService.GetAsync<string>("https://api.timkoto.com/util/api/utility/v1/RankTeams", new Dictionary<string, string>
+            {
+                {"x-api-key", "zuMylMBN8s4hePFTcgmGrvAeXoOLkPP2nxHp7er2"}
             });
 
-            return result;
-        }
+                return result;
+            }
+            catch (Exception)
+            {
 
-       
+                //throw;
+            }
+
+            return "Failed";
+        }
     }
 }
