@@ -107,7 +107,7 @@ namespace LiveStatsPoller
 
                 var result = await httpService.GetAsync<string>("https://api.timkoto.com/util/api/utility/v1/GetOfficialNbaStats", new Dictionary<string, string>
             {
-                {"x-api-key", "zuMylMBN8s4hePFTcgmGrvAeXoOLkPP2nxHp7er2"}
+                {"x-api-key", "[api-key]"}
             });
 
                 return result;
@@ -128,7 +128,7 @@ namespace LiveStatsPoller
 
                 var result = await httpService.GetAsync<string>("https://api.timkoto.com/util/api/utility/v1/RankTeams", new Dictionary<string, string>
             {
-                {"x-api-key", "zuMylMBN8s4hePFTcgmGrvAeXoOLkPP2nxHp7er2"}
+                {"x-api-key", "[api-key]"}
             });
 
                 return result;
